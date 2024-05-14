@@ -1,9 +1,15 @@
 # Botiga Api
 
-En aquesta pràctica, 
+En aquesta pràctica, haremos una Api Rest mediante fastApi, junto a una base de datos llamada Botiga. Esta, contiene las tablas de categoria, subcategoria y producto.
 
 ## Índice
-[Get product](#productAll/)
+- Get Product
+- Get Product {id}
+- Post product
+- Put product {id}
+- Delete product
+- Get All Product
+- Post Load Products
 
 ## Get /product/
 ![Get product](/Imagenes/read.png)
