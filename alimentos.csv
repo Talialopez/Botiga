@@ -1,0 +1,11 @@
+id_categoria,nom_categoria,id_subcategoria,nom_subcategoria,id_producto,nom_producto,descripcion_producto,companyia,precio,unidades
+1,Alimentos,1,Verduras,1001,Zanahorias,Frescas y orgánicas,Proveedor A,1.5,100
+1,Alimentos,1,Verduras,1002,Espinacas,Ricas en nutrientes,Proveedor B,2.0,150
+1,Alimentos,2,Cítricos,1003,Naranjas,Ricas en vitamina C,Proveedor C,3.0,200
+1,Alimentos,2,Cítricos,1004,Limones,Frescos y jugosos,Proveedor D,1.0,120
+1,Alimentos,3,Carnes,1005,Pollo,Pollo fresco y libre de antibióticos,Proveedor E,5.0,50
+1,Alimentos,3,Carnes,1006,Carne de res,Corte de primera calidad,Proveedor F,10.0,40
+1,Alimentos,4,Lácteos,1007,Leche,Leche orgánica entera,Proveedor G,1.2,200
+1,Alimentos,4,Lácteos,1008,Queso,Queso cheddar maduro,Proveedor H,3.5,100
+1,Alimentos,5,Granos,1009,Arroz,Arroz blanco de grano largo,Proveedor I,0.9,500
+1,Alimentos,5,Granos,1010,Frijoles,Frijoles negros orgánicos,Proveedor J,1.5,300
