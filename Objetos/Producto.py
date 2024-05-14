@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from datetime import datetime
 
 class Product(BaseModel):
-    product_id: int = None  # Opcional para nuevos productos, autoincrementado por la DB.
+    product_id: int = None  
     name: str
     description: str
     company: str
