@@ -1,5 +1,6 @@
 from bbdd import db_client
 
+# Función para verificar si una categoría existe en la base de datos
 def categoria_existe(category_id):
     try:
         conn = db_client()
@@ -14,6 +15,7 @@ def categoria_existe(category_id):
             cursor.close()
             conn.close()
 
+# Función para crear una nueva categoría en la base de datos
 def crear_categoria(category_name):
     try:
         conn = db_client()
@@ -29,6 +31,7 @@ def crear_categoria(category_name):
             cursor.close()
             conn.close()
 
+# Función para actualizar el nombre de una categoría en la base de datos
 def actualizar_categoria(category_id, category_name):
     try:
         conn = db_client()
