@@ -1,5 +1,6 @@
 from bbdd import db_client
 
+# Función para crear un nuevo producto en la base de datos
 def crear_producto(product):
     try:
         conn = db_client()
@@ -18,6 +19,7 @@ def crear_producto(product):
             cursor.close()
             conn.close()
 
+# Función para leer todos los productos de la base de datos
 def read_productos():
     try:
         conn = db_client()
@@ -32,6 +34,7 @@ def read_productos():
             cursor.close()
             conn.close()
 
+# Función para leer un producto específico de la base de datos por su ID
 def read_producto(product_id):
     try:
         conn = db_client()
@@ -46,6 +49,7 @@ def read_producto(product_id):
             cursor.close()
             conn.close()
 
+# Función para actualizar un producto en la base de datos por su ID
 def update_producto(product_id, product):
     try:
         conn = db_client()
@@ -64,6 +68,7 @@ def update_producto(product_id, product):
             cursor.close()
             conn.close()
 
+# Función para eliminar un producto de la base de datos por su ID
 def delete_producto(product_id):
     try:
         conn = db_client()
@@ -77,7 +82,8 @@ def delete_producto(product_id):
         if conn.is_connected():
             cursor.close()
             conn.close()
-
+            
+# Función para obtener detalles de todos los productos de la base de datos
 def get_product_details():
     try:
         conn = db_client()

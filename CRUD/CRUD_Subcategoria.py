@@ -1,5 +1,6 @@
 from bbdd import db_client
 
+# Función para verificar si una subcategoría existe en la base de datos
 def subcategoria_existe(subcategory_id):
     try:
         conn = db_client()
@@ -14,6 +15,7 @@ def subcategoria_existe(subcategory_id):
             cursor.close()
             conn.close()
 
+# Función para crear una nueva subcategoría en la base de datos
 def crear_subcategoria(subcategory_name, category_id):
     try:
         conn = db_client()
@@ -29,6 +31,7 @@ def crear_subcategoria(subcategory_name, category_id):
             cursor.close()
             conn.close()
 
+# Función para actualizar el nombre de una subcategoría en la base de datos
 def actualizar_subcategoria(subcategory_id, subcategory_name):
     try:
         conn = db_client()

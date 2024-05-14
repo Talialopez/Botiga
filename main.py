@@ -13,11 +13,12 @@ app = FastAPI()
 def read_root():
     return {"message": "Welcome to the Product API"}
 
-# CRUD para productos
+# Ruta para obtener todos los productos de Botiga
 @app.get("/product/")
 async def read_products():
     return read_productos()
 
+# Ruta para obtener un producto de Botiga por ID
 @app.get("/product/{product_id}")
 async def read_product(product_id: int):
     result = read_producto(product_id)
@@ -25,6 +26,7 @@ async def read_product(product_id: int):
         return result
     raise HTTPException(status_code=404, detail="Product not found")
 
+# Ruta para crear un producto
 @app.post("/product/")
 async def add_product(product: Product):
     subcategory = subcategoria_existe(product.subcategory_id)
@@ -35,6 +37,7 @@ async def add_product(product: Product):
         return result
     raise HTTPException(status_code=400, detail=result["message"])
 
+# Ruta para actualizar un producto por ID
 @app.put("/product/{product_id}")
 async def update_product_endpoint(product_id: int, product: Product):
     result = update_producto(product_id, product)
@@ -42,6 +45,7 @@ async def update_product_endpoint(product_id: int, product: Product):
         return result
     raise HTTPException(status_code=500, detail=result["message"])
 
+# Ruta para eliminar un producto por ID
 @app.delete("/product/{product_id}")
 async def delete_product_endpoint(product_id: int):
     result = delete_producto(product_id)
@@ -49,6 +53,7 @@ async def delete_product_endpoint(product_id: int):
         return result
     raise HTTPException(status_code=500, detail=result["message"])
 
+# Ruta para obtener todos los detalles de todos los productos
 @app.get("/productAll/")
 async def get_all_product_details():
     return get_product_details()
