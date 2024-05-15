@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+# Definición de la clase Product que hereda de BaseModel
 class Product(BaseModel):
     product_id: int = None  
     name: str
@@ -12,6 +13,7 @@ class Product(BaseModel):
     created_at: datetime = None
     updated_at: datetime = None
 
+# Función para convertir un objeto de producto en un diccionario
 def product_schema(product) -> dict:
     return {
         "product_id": product["product_id"],
@@ -25,5 +27,6 @@ def product_schema(product) -> dict:
         "updated_at": product["updated_at"]
     }
 
+# Función para convertir una lista de objetos de producto en una lista de diccionarios
 def products_schema(products) -> list:
     return [product_schema(product) for product in products]
