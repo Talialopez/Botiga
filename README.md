@@ -1,6 +1,6 @@
 # Botiga Api
 
-En aquesta pràctica, haremos una Api Rest mediante fastApi, junto a una base de datos llamada Botiga. Esta, contiene las tablas de categoria, subcategoria y producto.
+En esta práctica, haremos una Api Rest mediante fastApi, junto a una base de datos llamada "Botiga". Esta, contiene las tablas de categoria, subcategoria y producto. Mediante los endpoint visualizados más adelante, accederemos a la estructura de un producto, de tal manera que podemos realizar operación tipo CRUD con este.
 
 ## Índice
 - Get Product
