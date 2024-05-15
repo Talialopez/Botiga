@@ -9,66 +9,77 @@ from CRUD.CRUD_Subcategoria import subcategoria_existe, crear_subcategoria, actu
 
 app = FastAPI()
 
-@app.get("/")
-def read_root():
-    return {"message": "Welcome to the Product API"}
-
-# Ruta para obtener todos los productos de Botiga
+# Endpoint para obtenir llista de productes en les taules
 @app.get("/product/")
-async def read_products():
+def read_products():
+    #Truquem a la funció read_productos
     return read_productos()
 
-# Ruta para obtener un producto de Botiga por ID
+# Endpoint per obtenir un producte per ID
 @app.get("/product/{product_id}")
-async def read_product(product_id: int):
+def read_product(product_id: int):
+    # Truca a la funcio per obtenir un producte per ID
     result = read_producto(product_id)
     if result:
         return result
+    # Si el producte no es troba fa una excepció
     raise HTTPException(status_code=404, detail="Product not found")
 
-# Ruta para crear un producto
+# Endpoint per crear un nou producte
 @app.post("/product/")
-async def add_product(product: Product):
+def add_product(product: Product):
+    # Verifica si la subcategoria posada existeix
     subcategory = subcategoria_existe(product.subcategory_id)
     if not subcategory:
+        # Si no existeix la subcategoria llença exepció
         raise HTTPException(status_code=400, detail="Subcategory does not exist")
+    # Truca a la funció per crear producte
     result = crear_producto(product)
     if "product_id" in result:
         return result
+    # Si hi ha algun error per crear el producte fa una excepció
     raise HTTPException(status_code=400, detail=result["message"])
 
-# Ruta para actualizar un producto por ID
+# Endpoint per modificar un producte per id
 @app.put("/product/{product_id}")
-async def update_product_endpoint(product_id: int, product: Product):
+def update_product_endpoint(product_id: int, product: Product):
+    # Truca a la funció modificar per id
     result = update_producto(product_id, product)
     if "message" in result and result["message"] == "S’ha modificat correctement":
         return result
+    # Si hi ha algun error per modificar el producte fa una excepció
     raise HTTPException(status_code=500, detail=result["message"])
 
-# Ruta para eliminar un producto por ID
+# Endpoint per eliminar un producte per id
 @app.delete("/product/{product_id}")
-async def delete_product_endpoint(product_id: int):
+def delete_product_endpoint(product_id: int):
+    # Truca a la funció eliminar per id
     result = delete_producto(product_id)
     if "message" in result and result["message"] == "S’ha borrat correctement":
         return result
+    # Si hi ha algun error per eliminar el producte fa una excepció
     raise HTTPException(status_code=500, detail=result["message"])
 
-# Ruta para obtener todos los detalles de todos los productos
+# Endpoint pe saber tots els detalls de tots els productes
 @app.get("/productAll/")
-async def get_all_product_details():
+def get_all_product_details():
+    # Truca a la funcio per els detalls dels productes
     return get_product_details()
 
-# Ruta para cargar productos desde un archivo CSV
+# Endpoint per insertar productes desde un CSV
 @app.post("/loadProducts")
-async def load_products(file: UploadFile = File(...)):
+def load_products(file: UploadFile = File(...)):
     try:
-        contents = await file.read()
+        # Llegeix el contingut del arxiu
+        contents = file.file.read()
+        # Decodifica el contingur i en fa stringIO
         csv_data = io.StringIO(contents.decode("utf-8"))
         reader = csv.DictReader(csv_data)
 
         category_id_set = set()
         subcategory_id_set = set()
 
+        # Fem un for per cada linia del arxiu
         for row in reader:
             category_id = int(row["id_categoria"])
             category_name = row["nom_categoria"]
@@ -116,7 +127,9 @@ async def load_products(file: UploadFile = File(...)):
                     subcategory_id=subcategory_id
                 ))
 
+        # Si tot surt be fa un return de un misstge
         return {"message": "S'ha carregat correctament"}
 
     except Exception as e:
+        # Si no va be fa una exepcio
         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
